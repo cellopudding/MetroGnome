@@ -47,8 +47,22 @@ increaseTempoBtn.addEventListener('click', () =>{
   function updateMetronome() {
     tempoDisplay.textContent = bpm;
     tempoSlider.value = bpm;
+
+    if (bpm <= 39) { tempoTextString = "T-T-Today Junior!" };
+    if (bpm > 39 && bpm <= 60) { tempoTextString = "Largo" };
+    if (bpm > 60 && bpm <= 66) { tempoTextString = "Larghetto" };
+    if (bpm > 66 && bpm <=76)  { tempoTextString = "Adagio" };
+    if (bpm > 76 && bpm <=108)  { tempoTextString = "Andante" };
+    if (bpm > 108 && bpm <=120)  { tempoTextString = "Moderato" };
+    if (bpm > 120 && bpm <=168)  { tempoTextString = "Allegro" };
+    if (bpm > 168 && bpm <=200)  { tempoTextString = "Presto" };
+    if (bpm > 200 && bpm <=280)  { tempoTextString = "Prestissimo" };
+    
+
     tempoText.textContent = tempoTextString;
   };
+
+
 
   function validateTempo() {
     if (bpm <= 20) { return }
