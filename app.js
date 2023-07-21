@@ -1,3 +1,4 @@
+import Timer from './timer.js';
 const tempoDisplay = document.querySelector('.tempo');
 const tempoText = document.querySelector('.tempo-text');
 const decreaseTempoBtn = document.querySelector('.decrease-tempo');
@@ -8,9 +9,11 @@ const subtractBeats= document.querySelector('.subtract-beats');
 const addBeats = document.querySelector('.add-beats');
 const measureCount = document.querySelector('.measure-count');
 
+const click1 = new Audio('click1.mp3');
+
 let bpm = 140;
 let beatsPerMeasure = 4;
-let tempoTextString = 'Medium';
+let tempoTextString = '';
 
 decreaseTempoBtn.addEventListener('click', () =>{
   if (bpm <= 20) { return }
@@ -68,6 +71,14 @@ increaseTempoBtn.addEventListener('click', () =>{
     if (bpm <= 20) { return }
     if (bpm >= 280) { return }
   };
+
+  function playClick() {
+    click1.play
+  }
+
+  const metronome = new Timer(playClick, 60000 / bpm, { immediate: true})
+
+metronome.start();
 
 
 
